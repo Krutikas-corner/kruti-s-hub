@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic Sparkle Effect</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #111; /* Dark background taaki sparks chamkein */
+      color: white;
+      font-family: sans-serif;
+    }
+    canvas {
+      border: 2px solid #444;
+      background-color: black;
+      cursor: crosshair;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>✨ Magic Sparkle & Particle Effect ✨</h2>
+  <canvas id="magicCanvas" width="1000" height="600"></canvas>
+
+  <script>
+    const canvas = document.getElementById('magicCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+
+    // Particle (ek choti si chingari) ka blueprint
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        // Random direction aur speed dena
+        this.size = Math.random() * 5 + 2;
+        this.speedX = Math.random() * 6 - 3;
+        this.speedY = Math.random() * 6 - 3;
+        // Bright random color
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.life = 1; // Jaise-jaise time bitega, ye kam hoga
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 0.02; // Spark dheere-dheere fade hokar khatam hogi
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.life; // Transparency kam karna
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Jab mouse drag karein ya click karein, naye particles banao
+    canvas.addEventListener('mousemove', (e) => {
+      for (let i = 0; i < 3; i++) {
+        particles.push(new Particle(e.offsetX, e.offsetY));
+      }
+    });
+
+    // Animation loop jo particles ko continuously move aur draw karega
+    function animate() {
+      // Screen ko baar-baar clear karna taaki purane spots hat jayein
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Sabhi particles ko update aur draw karo
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+
+        // Agar particle ki life khatam ho jaye, toh use array se hata do
+        if (particles[i].life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Animation shuru karo
+    animate();
+  </script>
+
+</body>
+</html>
+
