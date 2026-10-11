@@ -1,0 +1,23 @@
+.container {
+text-align: center;
+margin-top: 100px;
+font-family: Arial, sans-serif;
+}
+
+h1 {
+color: blue;
+}
+
+h2 {
+color: green;
+font-size: 30px;
+min-height: 40px;
+}
+
+input {
+padding: 12px;
+width: 300px;
+font-size: 18px;
+border: 2px solid blue;
+border-radius: 5px;
+}
