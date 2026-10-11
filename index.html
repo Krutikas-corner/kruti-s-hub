@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array API Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+```
+<header>
+    <h1>Array API Manager</h1>
+    <p>Manage your arrays with CRUD operations</p>
+</header>
+
+<main class="container">
+
+    <section class="form-card">
+        <h2 id="formTitle">Add New Array</h2>
+
+        <form id="arrayForm">
+            <label for="arrayName">Array Name</label>
+            <input
+                type="text"
+                id="arrayName"
+                placeholder="Enter array name"
+                required
+            >
+
+            <label for="arrayElements">Array Elements</label>
+            <input
+                type="text"
+                id="arrayElements"
+                placeholder="Example: 10, 20, 30, 40"
+                required
+            >
+
+            <div class="button-group">
+                <button type="submit" id="saveButton">Add Array</button>
+                <button type="button" id="cancelButton" class="cancel hidden">
+                    Cancel
+                </button>
+            </div>
+        </form>
+
+        <p class="hint">Enter numbers separated by commas.</p>
+    </section>
+
+    <section class="list-card">
+        <div class="list-heading">
+            <h2>Saved Arrays</h2>
+            <button id="refreshButton" class="refresh">Refresh</button>
+        </div>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <div id="arrayList">
+            <p>Loading arrays...</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Full Stack Development Practical | Array CRUD API</p>
+</footer>
+
+<script src="script.js"></script>
+```
+
+</body>
+</html>
