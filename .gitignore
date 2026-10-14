@@ -1,0 +1,11 @@
+node_modules/
+MiniProject/**/node_modules/
+
+.env
+.env.*
+!.env.example
+
+dist/
+MiniProject/**/dist/
+
+.DS_Store
